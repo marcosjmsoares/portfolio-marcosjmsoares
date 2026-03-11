@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repositórios & Dashboards - Marcos José de Moura Soares</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+      color: #e0e0e0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10,10,15,0.95);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+    .logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00d4ff, #0099cc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: #00d4ff;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 8rem 2rem 4rem;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .page-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      background: linear-gradient(135deg, #ffffff, #e0e0e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+    .page-subtitle {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.3rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: linear-gradient(135deg, #ffffff, #e0e0e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .repos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .repo-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.4s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .repo-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255,255,255,0.08);
+      border-color: #00d4ff;
+      box-shadow: 0 20px 40px rgba(0,212,255,0.15);
+    }
+    .repo-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+    .repo-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .tech-badge {
+      background: rgba(0,212,255,0.2);
+      color: #00d4ff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .github-btn-wrapper {
+      text-align: center;
+      margin-top: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .github-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, #00d4ff, #0099cc);
+      color: #0a0a0f;
+      padding: 1rem 2.2rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-family: 'Outfit', sans-serif;
+    }
+    .github-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0,212,255,0.4);
+    }
+
+    .dashboards-section {
+      margin-top: 2rem;
+    }
+    .dashboard-item {
+      margin-bottom: 4rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+    }
+    .dashboard-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .dashboard-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
+      color: #ffffff;
+      flex: 1;
+    }
+    .dashboard-tech {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .dashboard-container {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      min-height: 600px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      background: #1a1a2e;
+    }
+    .powerbi-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 16px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #00d4ff, #0099cc);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+      font-family: 'Outfit', sans-serif;
+    }
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(0,212,255,0.4);
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 6rem 1rem 2rem; }
+      .dashboard-header { flex-direction: column; align-items: flex-start; }
+      .dashboard-container { height: 60vh; min-height: 500px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">MS</a>
+      <ul class="nav-links">
+        <li><a href="index.html">← Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="page-header">
+      <a href="index.html" class="back-btn">← Voltar ao Portfólio</a>
+      <h1 class="page-title">Repositórios & Dashboards</h1>
+      <p class="page-subtitle">
+        Projetos de engenharia de dados, BI e dashboards interativos desenvolvidos em Power BI.
+      </p>
+    </div>
+
+    <section class="repos-section">
+      <h2 class="section-title">Repositórios GitHub em Destaque</h2>
+      <div class="repos-grid">
+        <a href="https://github.com/marcosjmsoares/dbt-core-northwind-project-public" class="repo-card" target="_blank">
+          <h3>dbt-core-northwind-project-public</h3>
+          <div class="repo-tech">
+            <span class="tech-badge">dbt</span>
+            <span class="tech-badge">Data Warehouse</span>
+            <span class="tech-badge">Northwind</span>
+            <span class="tech-badge">SQL</span>
+          </div>
+          <p>Projeto de Data Warehouse usando dbt Core no dataset Northwind, seguindo padrões modernos de modelagem.</p>
+        </a>
+
+        <a href="https://github.com/marcosjmsoares/workshop_ai_agent" class="repo-card" target="_blank">
+          <h3>workshop_ai_agent</h3>
+          <div class="repo-tech">
+            <span class="tech-badge">AI Agents</span>
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">LLM</span>
+          </div>
+          <p>Workshop prático sobre agentes de IA e uso de LLMs em cenários reais.</p>
+        </a>
+
+        <a href="https://github.com/marcosjmsoares/Teste-Tecnico-Python-Acelera-01" class="repo-card" target="_blank">
+          <h3>Teste-Tecnico-Python-Acelera-01</h3>
+          <div class="repo-tech">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">Data Engineering</span>
+            <span class="tech-badge">ETL</span>
+          </div>
+          <p>Teste técnico em Python com foco em manipulação de dados, automação e boas práticas.</p>
+        </a>
+      </div>
+
+      <div class="github-btn-wrapper">
+        <a href="https://github.com/marcosjmsoares" class="github-btn" target="_blank">
+          Ver todos os projetos no GitHub
+        </a>
+      </div>
+    </section>
+
+    <section class="dashboards-section">
+      <h2 class="section-title">Dashboards Power BI</h2>
+
+      <!-- Internações -->
+      <div id="dashboard1" class="dashboard-item">
+        <div class="dashboard-header">
+          <div class="dashboard-title">Desafio Kickstart - Internações Hospitalares | XHospital</div>
+          <div class="dashboard-tech">
+            <span class="tech-badge">Healthcare Analytics</span>
+            <span class="tech-badge">Power BI</span>
+            <span class="tech-badge">DAX</span>
+          </div>
+        </div>
+        <p><strong>Principais análises:</strong> Admissões, saídas, altas e óbitos, tempo médio de permanência, taxa de mortalidade, receita e receita diária média, ticket médio, projeção de receita anual e taxa de variação homóloga.</p>
+        <div class="dashboard-container">
+          <iframe class="powerbi-iframe"
+            src="https://app.powerbi.com/view?r=eyJrIjoiYzNhYTNiMmUtZmFmNS00NDAwLWE1NTQtN2NkYjg3M2Q3ZWRiIiwidCI6ImI1MDQyNjY5LWU4ODctNDM1ZC04NzUyLWI4ZDk0MTY0YjVmZCJ9"
+            allowfullscreen="true">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Maio Amarelo -->
+      <div id="dashboard2" class="dashboard-item">
+        <div class="dashboard-header">
+          <div class="dashboard-title">Desafio Kickstart - Acidentes de Trânsito no Brasil | Maio Amarelo</div>
+          <div class="dashboard-tech">
+            <span class="tech-badge">DataViz</span>
+            <span class="tech-badge">Power BI</span>
+            <span class="tech-badge">Public Safety</span>
+          </div>
+        </div>
+        <p><strong>Principais análises:</strong> Rodovias mais perigosas, causas de acidentes mais comuns, proporção de acidentes com vítimas fatais, períodos com maior número de ocorrências, proporção de vítimas e veículos acidentados, além de mapa das rodovias e mapa de calor.</p>
+        <div class="dashboard-container">
+          <iframe class="powerbi-iframe"
+            src="https://app.powerbi.com/view?r=eyJrIjoiZjY4ZWY4OTktZDQyNy00ZTVkLTg1ZmYtNTdhODc1M2QyNjYxIiwidCI6ImI1MDQyNjY5LWU4ODctNDM1ZC04NzUyLWI4ZDk0MTY0YjVmZCJ9"
+            allowfullscreen="true">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Vendas -->
+      <div id="dashboard3" class="dashboard-item">
+        <div class="dashboard-header">
+          <div class="dashboard-title">Dashboard de Vendas</div>
+          <div class="dashboard-tech">
+            <span class="tech-badge">Sales Analytics</span>
+            <span class="tech-badge">Power BI</span>
+            <span class="tech-badge">BI</span>
+          </div>
+        </div>
+        <p><strong>Principais análises:</strong> Dashboard baseado na base de dados da Power BI Week (Aula 01), com faturamento e faturamento ano anterior, variação ano a ano, margem bruta e sua evolução, quantidade de notas emitidas, top vendedores, decomposição por linha de produto, fornecedor e vendedor, além de key results com principais influenciadores.</p>
+        <div class="dashboard-container">
+          <iframe class="powerbi-iframe"
+            src="https://app.powerbi.com/view?r=eyJrIjoiMDk3YzAwMmUtODA5ZC00Y2E1LWEyNDUtNTFiMmE0MWEyYWZiIiwidCI6ImI1MDQyNjY5LWU4ODctNDM1ZC04NzUyLWI4ZDk0MTY0YjVmZCJ9"
+            allowfullscreen="true">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- RH -->
+      <div id="dashboard4" class="dashboard-item">
+        <div class="dashboard-header">
+          <div class="dashboard-title">Dashboard de Recursos Humanos</div>
+          <div class="dashboard-tech">
+            <span class="tech-badge">HR Analytics</span>
+            <span class="tech-badge">Power BI</span>
+            <span class="tech-badge">People Analytics</span>
+          </div>
+        </div>
+        <p><strong>Principais análises:</strong> Dashboard com base da Power BI Week (Aula 02), cobrindo contratações, demissões, massa salarial, headcount, índice de más contratações, percentual de turnover e filtro dinâmico para alternar entre contratações, demissões, más contratações e headcount com visão aprofundada.</p>
+        <div class="dashboard-container">
+          <iframe class="powerbi-iframe"
+            src="https://app.powerbi.com/view?r=eyJrIjoiYzZhZmUwYjUtN2I0Ni00N2I3LWE5MzktZTYxMjhjMDQ2YTA1IiwidCI6ImI1MDQyNjY5LWU4ODctNDM1ZC04NzUyLWI4ZDk0MTY0YjVmZCJ9"
+            allowfullscreen="true">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

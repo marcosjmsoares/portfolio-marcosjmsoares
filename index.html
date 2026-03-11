@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marcos José de Moura Soares - Engenheiro de Dados</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+      color: #e0e0e0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10,10,15,0.95);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+    nav.scrolled {
+      background: rgba(10,10,15,0.98);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+    .logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00d4ff, #0099cc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .nav-links a:hover {
+      color: #00d4ff;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: #00d4ff;
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 2rem;
+      background: radial-gradient(circle at 20% 80%, rgba(0,212,255,0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(0,153,204,0.1) 0%, transparent 50%);
+    }
+    .hero-content h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff, #e0e0e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-content .title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-weight: 500;
+      color: #00d4ff;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .hero-content .subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      opacity: 0.9;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #00d4ff, #0099cc);
+      color: white;
+      box-shadow: 0 10px 30px rgba(0,212,255,0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0,212,255,0.4);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: #e0e0e0;
+      border: 2px solid #00d4ff;
+    }
+    .btn-secondary:hover {
+      background: #00d4ff;
+      color: #0a0a0f;
+    }
+
+    /* Sections */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      text-align: center;
+      margin-bottom: 4rem;
+      background: linear-gradient(135deg, #ffffff, #e0e0e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(135deg, #00d4ff, #0099cc);
+      border-radius: 2px;
+    }
+
+    /* Sobre */
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .sobre-text {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .skill-tag {
+      background: rgba(0,212,255,0.1);
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      text-align: center;
+      font-weight: 500;
+      border: 1px solid rgba(0,212,255,0.2);
+      transition: all 0.3s ease;
+    }
+    .skill-tag:hover {
+      background: rgba(0,212,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Cards de dashboards */
+    .projetos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .projeto-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .projeto-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #00d4ff, #0099cc, #00d4ff);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .projeto-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255,255,255,0.08);
+      border-color: #00d4ff;
+      box-shadow: 0 20px 40px rgba(0,212,255,0.15);
+    }
+    .projeto-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      color: #ffffff;
+    }
+    .projeto-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tech-badge {
+      background: rgba(0,212,255,0.2);
+      color: #00d4ff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .thumb {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #0b1020;
+      height: 160px;
+    }
+
+    .powerbi-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #00d4ff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border: 2px solid rgba(0,212,255,0.3);
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      margin-top: 0.5rem;
+      align-self: flex-start;
+    }
+    .powerbi-link:hover {
+      background: rgba(0,212,255,0.1);
+      border-color: #00d4ff;
+    }
+
+    footer {
+      background: rgba(10,10,15,0.8);
+      backdrop-filter: blur(20px);
+      text-align: center;
+      padding: 3rem 2rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .sobre-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      section { padding: 4rem 1rem; }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo">MS</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="repositorios.html">Repositório de Projetos</a></li>
+        <li><a href="#projetos">Dashboards Power BI</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="home" class="hero fade-in">
+    <div class="hero-content">
+      <h1>Marcos José de Moura Soares</h1>
+      <div class="title">Engenheiro de Dados</div>
+      <p class="subtitle">
+        Engenheiro de dados com 13+ anos de experiência em infraestrutura de TI na saúde,
+        orquestração de dados e arquiteturas modernas. Foco em transformar dados em insights acionáveis.
+      </p>
+      <div class="cta-buttons">
+        <a href="#projetos" class="btn btn-primary">Dashboards Power BI</a>
+        <a href="repositorios.html" class="btn btn-secondary">Repositório de Projetos</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" class="fade-in">
+    <h2 class="section-title">Sobre Mim</h2>
+    <div class="sobre-grid">
+      <div class="sobre-text">
+        <p>
+          Profissional de TI com mais de 13 anos de experiência em ambientes hospitalares, atuando em
+          infraestrutura, Business Intelligence e engenharia de dados. Trabalho em projetos de alta
+          complexidade envolvendo integração de dados de saúde, governança e automação.
+        </p>
+        <p>
+          Atuo com arquiteturas modernas de dados, ETL/ELT, modelagem dimensional, dashboards analíticos
+          e pipelines escaláveis em nuvem. Meu foco é entregar soluções robustas, bem documentadas e
+          alinhadas às necessidades do negócio.
+        </p>
+      </div>
+      <div>
+        <div class="skills-grid">
+          <div class="skill-tag">Engenharia de Dados</div>
+          <div class="skill-tag">Apache Airflow</div>
+          <div class="skill-tag">dbt</div>
+          <div class="skill-tag">Power BI</div>
+          <div class="skill-tag">AWS</div>
+          <div class="skill-tag">PostgreSQL</div>
+          <div class="skill-tag">Python</div>
+          <div class="skill-tag">DAX</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projetos" class="fade-in">
+    <h2 class="section-title">Dashboards Power BI</h2>
+    <div class="projetos-grid">
+
+      <!-- RH -->
+      <article class="projeto-card">
+        <div class="thumb">
+          <img src="img/dashboard-rh.jpg" alt="Dashboard de Recursos Humanos" style="width:100%;height:100%;object-fit:cover;border-radius:14px;">
+        </div>
+        <h3>Dashboard de Recursos Humanos</h3>
+        <div class="projeto-tech">
+          <span class="tech-badge">HR Analytics</span>
+          <span class="tech-badge">Power BI</span>
+          <span class="tech-badge">People Analytics</span>
+        </div>
+        <p>Visão de headcount, contratações, demissões, massa salarial, más contratações e indicadores de turnover.</p>
+        <a href="repositorios.html#dashboard4" class="powerbi-link">Abrir Dashboard</a>
+      </article>
+
+      <!-- Vendas -->
+      <article class="projeto-card">
+        <div class="thumb">
+          <img src="img/dashboard-vendas.jpg" alt="Dashboard de Vendas" style="width:100%;height:100%;object-fit:cover;border-radius:14px;">
+        </div>
+        <h3>Dashboard de Vendas</h3>
+        <div class="projeto-tech">
+          <span class="tech-badge">Sales Analytics</span>
+          <span class="tech-badge">Power BI</span>
+          <span class="tech-badge">BI</span>
+        </div>
+        <p>Painel executivo com faturamento, margens, notas emitidas, top vendedores e decomposição de resultados.</p>
+        <a href="repositorios.html#dashboard3" class="powerbi-link">Abrir Dashboard</a>
+      </article>
+
+      <!-- Maio Amarelo -->
+      <article class="projeto-card">
+        <div class="thumb">
+          <img src="img/dashboard-maio-amarelo.jpg" alt="Dashboard Maio Amarelo" style="width:100%;height:100%;object-fit:cover;border-radius:14px;">
+        </div>
+        <h3>Desafio Kickstart - Acidentes de Trânsito | Maio Amarelo</h3>
+        <div class="projeto-tech">
+          <span class="tech-badge">DataViz</span>
+          <span class="tech-badge">Power BI</span>
+          <span class="tech-badge">Public Safety</span>
+        </div>
+        <p>Análises de rodovias mais perigosas, causas de acidentes, vítimas, veículos e mapas de calor das ocorrências.</p>
+        <a href="repositorios.html#dashboard2" class="powerbi-link">Abrir Dashboard</a>
+      </article>
+
+      <!-- Internações -->
+      <article class="projeto-card">
+        <div class="thumb">
+          <img src="img/dashboard-internacoes.jpg" alt="Dashboard Internações Hospitalares" style="width:100%;height:100%;object-fit:cover;border-radius:14px;">
+        </div>
+        <h3>Desafio Kickstart - Internações Hospitalares | XHospital</h3>
+        <div class="projeto-tech">
+          <span class="tech-badge">Healthcare Analytics</span>
+          <span class="tech-badge">Power BI</span>
+          <span class="tech-badge">DAX</span>
+        </div>
+        <p>Overview de admissões, saídas, permanência média, mortalidade, receita e projeções de receita anual.</p>
+        <a href="repositorios.html#dashboard1" class="powerbi-link">Abrir Dashboard</a>
+      </article>
+
+    </div>
+  </section>
+
+  <footer class="fade-in">
+    <p>&copy; 2026 Marcos José de Moura Soares — Engenheiro de Dados.</p>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
