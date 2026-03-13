@@ -200,14 +200,13 @@
       border-top-color: #00d4ff;
     }
 
-    /* Sections — scroll-margin-top compensa a navbar fixa (~70px) */
+    /* Sections */
     section {
       padding: 6rem 2rem;
       max-width: 1200px;
       margin: 0 auto;
       scroll-margin-top: 80px;
     }
-
     .section-title {
       font-family: 'Outfit', sans-serif;
       font-size: clamp(2rem, 4vw, 2.5rem);
@@ -258,6 +257,66 @@
       transform: translateY(-2px);
     }
 
+    /* ===== CERTIFICAÇÕES ===== */
+.cert-grid {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.cert-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+.cert-item:hover {
+  transform: translateY(-8px);
+}
+
+.cert-badge-img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 0.75rem;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 4px 12px rgba(0,212,255,0.15));
+}
+.cert-item:hover .cert-badge-img {
+  border-color: rgba(0,212,255,0.45);
+  filter: drop-shadow(0 10px 24px rgba(0,212,255,0.35));
+  background: rgba(0,212,255,0.06);
+}
+
+.cert-info {
+  text-align: center;
+}
+.cert-info .cert-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.cert-info .cert-issuer {
+  font-size: 0.78rem;
+  color: #00d4ff;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .cert-grid { gap: 2rem; }
+  .cert-badge-img { width: 120px; height: 120px; }
+}
+
+
     /* ===== Repositórios GitHub ===== */
     .repos-grid {
       display: grid;
@@ -288,11 +347,7 @@
       color: #ffffff;
       word-break: break-word;
     }
-    .repo-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-    }
+    .repo-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
     .repo-tag {
       background: rgba(0,212,255,0.15);
       color: #00d4ff;
@@ -431,6 +486,7 @@
       .cta-buttons { flex-direction: column; align-items: center; }
       .cta-divider { width: 32px; height: 1px; }
       section { padding: 4rem 1rem; }
+      .cert-badge-img { width: 110px; height: 110px; }
     }
 
     .fade-in {
@@ -451,6 +507,7 @@
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#certificacoes">Certificações</a></li>
         <li><a href="#repositorios">Repositório de Projetos</a></li>
         <li><a href="#projetos">Dashboards Power BI</a></li>
       </ul>
@@ -467,44 +524,35 @@
       </p>
 
       <div class="cta-buttons">
-        <!-- CORREÇÃO: aponta para #repositorios -->
         <a href="#repositorios" class="btn btn-primary">Ver Projetos →</a>
-
         <div class="cta-divider"></div>
-
         <div class="social-links">
+
           <!-- LinkedIn -->
           <a href="https://www.linkedin.com/in/marcosjmsoares" target="_blank" class="social-link" title="LinkedIn">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.98 1.98 0 0 1-1.984-1.984 1.98 1.98 0 0 1 1.984-1.984 1.98 1.98 0 0 1 1.984 1.984 1.98 1.98 0 0 1-1.984 1.984zm1.707 13.019H3.63V9h3.414v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.98 1.98 0 0 1-1.984-1.984 1.98 1.98 0 0 1 1.984-1.984 1.98 1.98 0 0 1 1.984 1.984 1.98 1.98 0 0 1-1.984 1.984zm1.707 13.019H3.63V9h3.414v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             LinkedIn
           </a>
 
           <!-- GitHub -->
           <a href="https://github.com/marcosjmsoares" target="_blank" class="social-link" title="GitHub">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
             GitHub
           </a>
 
           <!-- Power BI -->
           <a href="#projetos" class="social-link" title="Dashboards Power BI">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 3h4v18H3V3zm5.5 7h4v11h-4V10zm5.5-4h4v15h-4V6zm5.5 6h3v9H19v-9z"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M3 3h4v18H3V3zm5.5 7h4v11h-4V10zm5.5-4h4v15h-4V6zm5.5 6h3v9H19v-9z"/></svg>
             Power BI
           </a>
 
-          <!-- Email — copia para área de transferência -->
+          <!-- Email -->
           <button class="social-link" id="emailBtn" title="Copiar e-mail" onclick="copiarEmail()">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
             Email
             <span class="email-tooltip" id="emailTooltip">✓ E-mail copiado!</span>
           </button>
+
         </div>
       </div>
     </div>
@@ -540,6 +588,56 @@
     </div>
   </section>
 
+  <!-- ===== CERTIFICAÇÕES ===== -->
+<section id="certificacoes" class="fade-in">
+  <h2 class="section-title">Certificações</h2>
+
+  <div class="cert-grid">
+
+    <!-- AWS -->
+    <a href="https://www.credly.com/badges/302528d3-4fc3-45d7-82ca-457fa233d620/linked_in_profile"
+       target="_blank" class="cert-item">
+      <img src="img/aws CLF-C02-badge.png" alt="AWS Certified Cloud Practitioner" class="cert-badge-img">
+      <div class="cert-info">
+        <span class="cert-name">CLF-C02: AWS Cloud Practitioner</span>
+        <span class="cert-issuer">Amazon Web Services</span>
+      </div>
+    </a>
+
+    <!-- DP-900 -->
+    <a href="https://www.credly.com/badges/af233539-7791-458c-83fa-cc4f4fbbcc79/public_url"
+       target="_blank" class="cert-item">
+      <img src="img/dp900-badge.png" alt="Microsoft DP-900" class="cert-badge-img">
+      <div class="cert-info">
+        <span class="cert-name">DP-900: Azure Data Fundamentals</span>
+        <span class="cert-issuer">Microsoft</span>
+      </div>
+    </a>
+
+    <!-- DP-600 -->
+    <a href="https://learn.microsoft.com/en-us/users/marcosjosdemourasoares-8008/credentials/eadcd04f85250339"
+       target="_blank" class="cert-item">
+      <img src="img/dp600-badge.png" alt="Microsoft DP-600" class="cert-badge-img">
+      <div class="cert-info">
+        <span class="cert-name">DP-600: Fabric Analytics Engineer</span>
+        <span class="cert-issuer">Microsoft</span>
+      </div>
+    </a>
+
+    <!-- PL-300 -->
+    <a href="https://learn.microsoft.com/pt-br/users/marcosjosdemourasoares-8008/credentials/9081ade38dde38ba"
+       target="_blank" class="cert-item">
+      <img src="img/pl300-badge.png" alt="Microsoft PL-300" class="cert-badge-img">
+      <div class="cert-info">
+        <span class="cert-name">PL-300: Power BI Data Analyst</span>
+        <span class="cert-issuer">Microsoft</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+
   <!-- ===== REPOSITÓRIOS GITHUB ===== -->
   <section id="repositorios" class="fade-in">
     <h2 class="section-title">Repositórios GitHub em Destaque</h2>
@@ -554,9 +652,7 @@
           <span class="repo-tag">SQL</span>
         </div>
         <p>Projeto de Data Warehouse usando dbt Core no dataset Northwind, seguindo padrões modernos de modelagem.</p>
-        <a href="https://github.com/marcosjmsoares/dbt-core-northwind-project-public" target="_blank" class="repo-link">
-          Ver repositório →
-        </a>
+        <a href="https://github.com/marcosjmsoares/dbt-core-northwind-project-public" target="_blank" class="repo-link">Ver repositório →</a>
       </div>
 
       <div class="repo-card">
@@ -567,9 +663,7 @@
           <span class="repo-tag">LLM</span>
         </div>
         <p>Workshop prático sobre agentes de IA e uso de LLMs em cenários reais.</p>
-        <a href="https://github.com/marcosjmsoares/workshop_ai_agent" target="_blank" class="repo-link">
-          Ver repositório →
-        </a>
+        <a href="https://github.com/marcosjmsoares/workshop_ai_agent" target="_blank" class="repo-link">Ver repositório →</a>
       </div>
 
       <div class="repo-card">
@@ -580,18 +674,14 @@
           <span class="repo-tag">ETL</span>
         </div>
         <p>Teste técnico em Python com foco em manipulação de dados, automação e boas práticas.</p>
-        <a href="https://github.com/marcosjmsoares/Teste-Tecnico-Python-Acelera-01" target="_blank" class="repo-link">
-          Ver repositório →
-        </a>
+        <a href="https://github.com/marcosjmsoares/Teste-Tecnico-Python-Acelera-01" target="_blank" class="repo-link">Ver repositório →</a>
       </div>
 
     </div>
 
     <div class="repos-cta">
       <a href="https://github.com/marcosjmsoares" target="_blank" class="btn-github">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-        </svg>
+        <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
         Ver todos os projetos no GitHub
       </a>
     </div>
@@ -602,7 +692,6 @@
     <h2 class="section-title">Dashboards Power BI</h2>
     <div class="projetos-grid">
 
-      <!-- RH -->
       <article class="projeto-card">
         <div class="thumb">
           <img src="img/dashboard-rh.jpg" alt="Dashboard de Recursos Humanos" style="width:100%;height:100%;object-fit:cover;border-radius:14px;">
@@ -617,7 +706,6 @@
         <a href="repositorios.html#dashboard4" class="powerbi-link">Abrir Dashboard</a>
       </article>
 
-      <!-- Vendas -->
       <article class="projeto-card">
         <div class="thumb">
           <img src="img/dashboard-vendas.jpg" alt="Dashboard de Vendas" style="width:100%;height:100%;object-fit:cover;border-radius:14px;">
@@ -632,7 +720,6 @@
         <a href="repositorios.html#dashboard3" class="powerbi-link">Abrir Dashboard</a>
       </article>
 
-      <!-- Maio Amarelo -->
       <article class="projeto-card">
         <div class="thumb">
           <img src="img/dashboard-maio-amarelo.jpg" alt="Dashboard Maio Amarelo" style="width:100%;height:100%;object-fit:cover;border-radius:14px;">
@@ -647,7 +734,6 @@
         <a href="repositorios.html#dashboard2" class="powerbi-link">Abrir Dashboard</a>
       </article>
 
-      <!-- Internações -->
       <article class="projeto-card">
         <div class="thumb">
           <img src="img/dashboard-internacoes-xhospital.jpg" alt="Dashboard Internações Hospitalares" style="width:100%;height:100%;object-fit:cover;border-radius:14px;">
@@ -672,8 +758,7 @@
   <script>
     // Navbar scroll
     window.addEventListener('scroll', () => {
-      const navbar = document.getElementById('navbar');
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
     });
 
     // Fade-in observer
@@ -684,11 +769,10 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Smooth scroll — compensa navbar fixa de ~70px
+    // Smooth scroll compensando navbar fixa
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        const target = document.querySelector(href);
+        const target = document.querySelector(this.getAttribute('href'));
         if (target) {
           e.preventDefault();
           const navHeight = document.getElementById('navbar').offsetHeight;
@@ -698,10 +782,9 @@
       });
     });
 
-    // Copiar email para clipboard
+    // Copiar email
     function copiarEmail() {
-      const email = 'marcosjmsoares@gmail.com'; // ← substitua pelo seu e-mail real
-      navigator.clipboard.writeText(email).then(() => {
+      navigator.clipboard.writeText('marcosjmsoares@gmail.com').then(() => {
         const tooltip = document.getElementById('emailTooltip');
         tooltip.classList.add('show');
         setTimeout(() => tooltip.classList.remove('show'), 2000);
