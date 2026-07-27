@@ -224,6 +224,49 @@
       box-shadow: 0 15px 40px rgba(0,212,255,0.4);
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    /* Language Switcher */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.2rem;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: #b0b8c8;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .lang-btn:hover {
+      color: #00d4ff;
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(135deg, #00d4ff, #0099cc);
+      color: #0a0a0f;
+      box-shadow: 0 4px 12px rgba(0, 212, 255, 0.25);
+    }
+
     @media (max-width: 768px) {
       .container { padding: 6rem 1rem 2rem; }
       .dashboard-header { flex-direction: column; align-items: flex-start; }
@@ -236,23 +279,29 @@
   <nav>
     <div class="nav-container">
       <a href="index.html" class="logo">MS</a>
-      <ul class="nav-links">
-        <li><a href="index.html">← Home</a></li>
-      </ul>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav-back-home">← Home</a></li>
+        </ul>
+        <div class="lang-switcher">
+          <button onclick="changeLanguage('pt-br')" id="btn-pt" class="lang-btn active">PT-BR</button>
+          <button onclick="changeLanguage('en-usa')" id="btn-en" class="lang-btn">EN-USA</button>
+        </div>
+      </div>
     </div>
   </nav>
 
   <div class="container">
     <div class="page-header">
-      <a href="index.html" class="back-btn">← Voltar ao Portfólio</a>
-      <h1 class="page-title">Repositórios & Dashboards</h1>
-      <p class="page-subtitle">
+      <a href="index.html" class="back-btn" data-i18n="back-btn">← Voltar ao Portfólio</a>
+      <h1 class="page-title" data-i18n="page-title">Repositórios & Dashboards</h1>
+      <p class="page-subtitle" data-i18n="page-subtitle">
         Projetos de engenharia de dados, BI e dashboards interativos desenvolvidos em Power BI.
       </p>
     </div>
 
     <section class="repos-section">
-      <h2 class="section-title">Repositórios GitHub em Destaque</h2>
+      <h2 class="section-title" data-i18n="repos-title">Repositórios GitHub em Destaque</h2>
       <div class="repos-grid">
         <a href="https://github.com/marcosjmsoares/dbt-core-northwind-project-public" class="repo-card" target="_blank">
           <h3>dbt-core-northwind-project-public</h3>
@@ -262,7 +311,7 @@
             <span class="tech-badge">Northwind</span>
             <span class="tech-badge">SQL</span>
           </div>
-          <p>Projeto de Data Warehouse usando dbt Core no dataset Northwind, seguindo padrões modernos de modelagem.</p>
+          <p data-i18n="repo-1-desc">Projeto de Data Warehouse usando dbt Core no dataset Northwind, seguindo padrões modernos de modelagem.</p>
         </a>
 
         <a href="https://github.com/marcosjmsoares/workshop_ai_agent" class="repo-card" target="_blank">
@@ -272,7 +321,7 @@
             <span class="tech-badge">Python</span>
             <span class="tech-badge">LLM</span>
           </div>
-          <p>Workshop prático sobre agentes de IA e uso de LLMs em cenários reais.</p>
+          <p data-i18n="repo-2-desc">Workshop prático sobre agentes de IA e uso de LLMs em cenários reais.</p>
         </a>
 
         <a href="https://github.com/marcosjmsoares/Teste-Tecnico-Python-Acelera-01" class="repo-card" target="_blank">
@@ -282,31 +331,31 @@
             <span class="tech-badge">Data Engineering</span>
             <span class="tech-badge">ETL</span>
           </div>
-          <p>Teste técnico em Python com foco em manipulação de dados, automação e boas práticas.</p>
+          <p data-i18n="repo-3-desc">Teste técnico em Python com foco em manipulação de dados, automação e boas práticas.</p>
         </a>
       </div>
 
       <div class="github-btn-wrapper">
-        <a href="https://github.com/marcosjmsoares" class="github-btn" target="_blank">
+        <a href="https://github.com/marcosjmsoares" class="github-btn" target="_blank" data-i18n="github-btn">
           Ver todos os projetos no GitHub
         </a>
       </div>
     </section>
 
     <section class="dashboards-section">
-      <h2 class="section-title">Dashboards Power BI</h2>
+      <h2 class="section-title" data-i18n="dashboards-title">Dashboards Power BI</h2>
 
       <!-- Internações -->
       <div id="dashboard1" class="dashboard-item">
         <div class="dashboard-header">
-          <div class="dashboard-title">Desafio Kickstart - Internações Hospitalares | XHospital</div>
+          <div class="dashboard-title" data-i18n="dash-hosp-title">Desafio Kickstart - Internações Hospitalares | XHospital</div>
           <div class="dashboard-tech">
             <span class="tech-badge">Healthcare Analytics</span>
             <span class="tech-badge">Power BI</span>
             <span class="tech-badge">DAX</span>
           </div>
         </div>
-        <p><strong>Principais análises:</strong> Admissões, saídas, altas e óbitos, tempo médio de permanência, taxa de mortalidade, receita e receita diária média, ticket médio, projeção de receita anual e taxa de variação homóloga.</p>
+        <p data-i18n="dash-hosp-summary"><strong>Principais análises:</strong> Admissões, saídas, altas e óbitos, tempo médio de permanência, taxa de mortalidade, receita e receita diária média, ticket médio, projeção de receita anual e taxa de variação homóloga.</p>
         <div class="dashboard-container">
           <iframe class="powerbi-iframe"
             src="https://app.powerbi.com/view?r=eyJrIjoiYzNhYTNiMmUtZmFmNS00NDAwLWE1NTQtN2NkYjg3M2Q3ZWRiIiwidCI6ImI1MDQyNjY5LWU4ODctNDM1ZC04NzUyLWI4ZDk0MTY0YjVmZCJ9"
@@ -318,14 +367,14 @@
       <!-- Maio Amarelo -->
       <div id="dashboard2" class="dashboard-item">
         <div class="dashboard-header">
-          <div class="dashboard-title">Desafio Kickstart - Acidentes de Trânsito no Brasil | Maio Amarelo</div>
+          <div class="dashboard-title" data-i18n="dash-maio-title">Desafio Kickstart - Acidentes de Trânsito no Brasil | Maio Amarelo</div>
           <div class="dashboard-tech">
             <span class="tech-badge">DataViz</span>
             <span class="tech-badge">Power BI</span>
             <span class="tech-badge">Public Safety</span>
           </div>
         </div>
-        <p><strong>Principais análises:</strong> Rodovias mais perigosas, causas de acidentes mais comuns, proporção de acidentes com vítimas fatais, períodos com maior número de ocorrências, proporção de vítimas e veículos acidentados, além de mapa das rodovias e mapa de calor.</p>
+        <p data-i18n="dash-maio-summary"><strong>Principais análises:</strong> Rodovias mais perigosas, causas de acidentes mais comuns, proporção de acidentes com vítimas fatais, períodos com maior número de ocorrências, proporção de vítimas e veículos acidentados, além de mapa das rodovias e mapa de calor.</p>
         <div class="dashboard-container">
           <iframe class="powerbi-iframe"
             src="https://app.powerbi.com/view?r=eyJrIjoiZjY4ZWY4OTktZDQyNy00ZTVkLTg1ZmYtNTdhODc1M2QyNjYxIiwidCI6ImI1MDQyNjY5LWU4ODctNDM1ZC04NzUyLWI4ZDk0MTY0YjVmZCJ9"
@@ -337,14 +386,14 @@
       <!-- Vendas -->
       <div id="dashboard3" class="dashboard-item">
         <div class="dashboard-header">
-          <div class="dashboard-title">Dashboard de Vendas</div>
+          <div class="dashboard-title" data-i18n="dash-sales-title">Dashboard de Vendas</div>
           <div class="dashboard-tech">
             <span class="tech-badge">Sales Analytics</span>
             <span class="tech-badge">Power BI</span>
             <span class="tech-badge">BI</span>
           </div>
         </div>
-        <p><strong>Principais análises:</strong> Dashboard baseado na base de dados da Power BI Week (Aula 01), com faturamento e faturamento ano anterior, variação ano a ano, margem bruta e sua evolução, quantidade de notas emitidas, top vendedores, decomposição por linha de produto, fornecedor e vendedor, além de key results com principais influenciadores.</p>
+        <p data-i18n="dash-sales-summary"><strong>Principais análises:</strong> Dashboard baseado na base de dados da Power BI Week (Aula 01), com faturamento e faturamento ano anterior, variação ano a ano, margem bruta e sua evolução, quantidade de notas emitidas, top vendedores, decomposição por linha de produto, fornecedor e vendedor, além de key results com principais influenciadores.</p>
         <div class="dashboard-container">
           <iframe class="powerbi-iframe"
             src="https://app.powerbi.com/view?r=eyJrIjoiMDk3YzAwMmUtODA5ZC00Y2E1LWEyNDUtNTFiMmE0MWEyYWZiIiwidCI6ImI1MDQyNjY5LWU4ODctNDM1ZC04NzUyLWI4ZDk0MTY0YjVmZCJ9"
@@ -356,14 +405,14 @@
       <!-- RH -->
       <div id="dashboard4" class="dashboard-item">
         <div class="dashboard-header">
-          <div class="dashboard-title">Dashboard de Recursos Humanos</div>
+          <div class="dashboard-title" data-i18n="dash-hr-title">Dashboard de Recursos Humanos</div>
           <div class="dashboard-tech">
             <span class="tech-badge">HR Analytics</span>
             <span class="tech-badge">Power BI</span>
             <span class="tech-badge">People Analytics</span>
           </div>
         </div>
-        <p><strong>Principais análises:</strong> Dashboard com base da Power BI Week (Aula 02), cobrindo contratações, demissões, massa salarial, headcount, índice de más contratações, percentual de turnover e filtro dinâmico para alternar entre contratações, demissões, más contratações e headcount com visão aprofundada.</p>
+        <p data-i18n="dash-hr-summary"><strong>Principais análises:</strong> Dashboard com base da Power BI Week (Aula 02), cobrindo contratações, demissões, massa salarial, headcount, índice de más contratações, percentual de turnover e filtro dinâmico para alternar entre contratações, demissões, más contratações e headcount com visão aprofundada.</p>
         <div class="dashboard-container">
           <iframe class="powerbi-iframe"
             src="https://app.powerbi.com/view?r=eyJrIjoiYzZhZmUwYjUtN2I0Ni00N2I3LWE5MzktZTYxMjhjMDQ2YTA1IiwidCI6ImI1MDQyNjY5LWU4ODctNDM1ZC04NzUyLWI4ZDk0MTY0YjVmZCJ9"
@@ -373,5 +422,90 @@
       </div>
     </section>
   </div>
+
+  <script>
+    // Traduções
+    const translations = {
+      'pt-br': {
+        'title-tag': 'Repositórios & Dashboards - Marcos José de Moura Soares',
+        'nav-back-home': '← Home',
+        'back-btn': '← Voltar ao Portfólio',
+        'page-title': 'Repositórios & Dashboards',
+        'page-subtitle': 'Projetos de engenharia de dados, BI e dashboards interativos desenvolvidos em Power BI.',
+        'repos-title': 'Repositórios GitHub em Destaque',
+        'repo-1-desc': 'Projeto de Data Warehouse usando dbt Core no dataset Northwind, seguindo padrões modernos de modelagem.',
+        'repo-2-desc': 'Workshop prático sobre agentes de IA e uso de LLMs em cenários reais.',
+        'repo-3-desc': 'Teste técnico em Python com foco em manipulação de dados, automação e boas práticas.',
+        'github-btn': 'Ver todos os projetos no GitHub',
+        'dashboards-title': 'Dashboards Power BI',
+        'dash-hosp-title': 'Desafio Kickstart - Internações Hospitalares | XHospital',
+        'dash-hosp-summary': '<strong>Principais análises:</strong> Admissões, saídas, altas e óbitos, tempo médio de permanência, taxa de mortalidade, receita e receita diária média, ticket médio, projeção de receita anual e taxa de variação homóloga.',
+        'dash-maio-title': 'Desafio Kickstart - Acidentes de Trânsito no Brasil | Maio Amarelo',
+        'dash-maio-summary': '<strong>Principais análises:</strong> Rodovias mais perigosas, causas de acidentes mais comuns, proporção de acidentes com vítimas fatais, períodos com maior número de ocorrências, proporção de vítimas e veículos acidentados, além de mapa das rodovias e mapa de calor.',
+        'dash-sales-title': 'Dashboard de Vendas',
+        'dash-sales-summary': '<strong>Principais análises:</strong> Dashboard baseado na base de dados da Power BI Week (Aula 01), com faturamento e faturamento ano anterior, variação ano a ano, margem bruta e sua evolução, quantidade de notas emitidas, top vendedores, decomposição por linha de produto, fornecedor e vendedor, além de key results com principais influenciadores.',
+        'dash-hr-title': 'Dashboard de Recursos Humanos',
+        'dash-hr-summary': '<strong>Principais análises:</strong> Dashboard com base da Power BI Week (Aula 02), cobrindo contratações, demissões, massa salarial, headcount, índice de más contratações, percentual de turnover e filtro dinâmico para alternar entre contratações, demissões, más contratações e headcount com visão aprofundada.'
+      },
+      'en-usa': {
+        'title-tag': 'Repositories & Dashboards - Marcos José de Moura Soares',
+        'nav-back-home': '← Home',
+        'back-btn': '← Back to Portfolio',
+        'page-title': 'Repositories & Dashboards',
+        'page-subtitle': 'Data engineering projects, BI, and interactive dashboards developed in Power BI.',
+        'repos-title': 'Featured GitHub Repositories',
+        'repo-1-desc': 'Data Warehouse project using dbt Core on the Northwind dataset, following modern modeling standards.',
+        'repo-2-desc': 'Practical workshop on AI agents and using LLMs in real-world scenarios.',
+        'repo-3-desc': 'Technical test in Python focused on data manipulation, automation, and best practices.',
+        'github-btn': 'View all projects on GitHub',
+        'dashboards-title': 'Power BI Dashboards',
+        'dash-hosp-title': 'Kickstart Challenge - Hospitalizations | XHospital',
+        'dash-hosp-summary': '<strong>Main analysis:</strong> Admissions, discharges, discharges and deaths, average length of stay, mortality rate, revenue and average daily revenue, average ticket, annual revenue projection, and year-on-year growth rate.',
+        'dash-maio-title': 'Kickstart Challenge - Traffic Accidents in Brazil | Yellow May',
+        'dash-maio-summary': '<strong>Main analysis:</strong> Most dangerous highways, most common causes of accidents, proportion of fatal accidents, periods with the highest number of occurrences, proportion of victims and damaged vehicles, as well as highway map and heat map.',
+        'dash-sales-title': 'Sales Dashboard',
+        'dash-sales-summary': '<strong>Main analysis:</strong> Dashboard based on the Power BI Week (Class 01) database, featuring billing and prior year billing, year-over-year variation, gross margin and its evolution, quantity of invoices issued, top salespeople, decomposition by product line, supplier and salesperson, in addition to key results with main influencers.',
+        'dash-hr-title': 'Human Resources Dashboard',
+        'dash-hr-summary': '<strong>Main analysis:</strong> Dashboard based on Power BI Week (Class 02), covering hiring, dismissals, payroll, headcount, bad hires index, turnover percentage, and dynamic filter to toggle between hiring, dismissals, bad hires, and headcount with an in-depth view.'
+      }
+    };
+
+    function changeLanguage(lang) {
+      localStorage.setItem('pref-lang', lang);
+      applyLanguage(lang);
+    }
+
+    function applyLanguage(lang) {
+      document.documentElement.lang = lang === 'pt-br' ? 'pt-BR' : 'en-US';
+      const langData = translations[lang];
+      if (!langData) return;
+
+      if (langData['title-tag']) {
+        document.title = langData['title-tag'];
+      }
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (langData[key]) {
+          if (el.innerHTML.includes('<') || el.innerHTML.includes('&copy;') || key === 'footer-text' || key.includes('summary') || key.includes('desc') || key.includes('title')) {
+            el.innerHTML = langData[key];
+          } else {
+            el.textContent = langData[key];
+          }
+        }
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      if (lang === 'pt-br') {
+        document.getElementById('btn-pt').classList.add('active');
+      } else {
+        document.getElementById('btn-en').classList.add('active');
+      }
+    }
+
+    // Inicializar idioma
+    const savedLang = localStorage.getItem('pref-lang') || 'pt-br';
+    applyLanguage(savedLang);
+  </script>
 </body>
 </html>

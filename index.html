@@ -622,6 +622,49 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    /* Language Switcher */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.2rem;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: #b0b8c8;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .lang-btn:hover {
+      color: #00d4ff;
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(135deg, #00d4ff, #0099cc);
+      color: #0a0a0f;
+      box-shadow: 0 4px 12px rgba(0, 212, 255, 0.25);
+    }
   </style>
 </head>
 
@@ -629,27 +672,33 @@
   <nav id="navbar">
     <div class="nav-container">
       <a href="#home" class="logo">MS</a>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#certificacoes">Certificações</a></li>
-        <li><a href="#repositorios">Repositório de Projetos</a></li>
-        <li><a href="#projetos">Dashboards Power BI</a></li>
-      </ul>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#home" data-i18n="nav-home">Home</a></li>
+          <li><a href="#sobre" data-i18n="nav-sobre">Sobre</a></li>
+          <li><a href="#certificacoes" data-i18n="nav-certificacoes">Certificações</a></li>
+          <li><a href="#repositorios" data-i18n="nav-repositorios">Repositório de Projetos</a></li>
+          <li><a href="#projetos" data-i18n="nav-projetos">Dashboards Power BI</a></li>
+        </ul>
+        <div class="lang-switcher">
+          <button onclick="changeLanguage('pt-br')" id="btn-pt" class="lang-btn active">PT-BR</button>
+          <button onclick="changeLanguage('en-usa')" id="btn-en" class="lang-btn">EN-USA</button>
+        </div>
+      </div>
     </div>
   </nav>
 
   <section id="home" class="hero fade-in">
     <div class="hero-content">
       <h1>Marcos Soares</h1>
-      <div class="title">Engenheiro de Dados Sênior</div>
-      <p class="subtitle">
+      <div class="title" data-i18n="hero-role">Engenheiro de Dados Sênior</div>
+      <p class="subtitle" data-i18n="hero-subtitle">
         Engenheiro de dados Sênior com + 13 anos de experiência em infraestrutura de TI na saúde,
         orquestração de dados e arquiteturas modernas. Foco em transformar dados em insights acionáveis.
       </p>
 
       <div class="cta-buttons">
-        <a href="#repositorios" class="btn btn-primary">Ver Projetos →</a>
+        <a href="#repositorios" class="btn btn-primary" data-i18n="hero-cta">Ver Projetos →</a>
         <div class="cta-divider"></div>
         <div class="social-links">
 
@@ -659,7 +708,7 @@
               <path
                 d="M20.447 20.452H16.89v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a1.98 1.98 0 0 1-1.984-1.984 1.98 1.98 0 0 1 1.984-1.984 1.98 1.98 0 0 1 1.984 1.984 1.98 1.98 0 0 1-1.984 1.984zm1.707 13.019H3.63V9h3.414v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
             </svg>
-            LinkedIn
+            <span data-i18n="social-linkedin">LinkedIn</span>
           </a>
 
           <!-- GitHub -->
@@ -668,7 +717,7 @@
               <path
                 d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
             </svg>
-            GitHub
+            <span data-i18n="social-github">GitHub</span>
           </a>
 
           <!-- Power BI -->
@@ -676,7 +725,7 @@
             <svg viewBox="0 0 24 24">
               <path d="M3 3h4v18H3V3zm5.5 7h4v11h-4V10zm5.5-4h4v15h-4V6zm5.5 6h3v9H19v-9z" />
             </svg>
-            Power BI
+            <span data-i18n="social-powerbi">Power BI</span>
           </a>
 
           <!-- Email -->
@@ -685,8 +734,8 @@
               <path
                 d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
             </svg>
-            Email
-            <span class="email-tooltip" id="emailTooltip">✓ E-mail copiado!</span>
+            <span data-i18n="social-email">Email</span>
+            <span class="email-tooltip" id="emailTooltip" data-i18n="email-tooltip">✓ E-mail copiado!</span>
           </button>
 
         </div>
@@ -695,15 +744,15 @@
   </section>
 
   <section id="sobre" class="fade-in">
-    <h2 class="section-title">Sobre Mim</h2>
+    <h2 class="section-title" data-i18n="about-title">Sobre Mim</h2>
     <div class="sobre-grid">
       <div class="sobre-text">
-        <p>
+        <p data-i18n="about-p1">
           Profissional de TI com mais de 13 anos de experiência em ambientes hospitalares, atuando em
           infraestrutura, Business Intelligence e engenharia de dados. Trabalho em projetos de alta
           complexidade envolvendo integração de dados de saúde, governança e automação.
         </p>
-        <p>
+        <p data-i18n="about-p2">
           Atuo com arquiteturas modernas de dados, ETL/ELT, modelagem dimensional, dashboards analíticos
           e pipelines escaláveis em nuvem. Meu foco é entregar soluções robustas, bem documentadas e
           alinhadas às necessidades do negócio.
@@ -711,12 +760,12 @@
       </div>
       <div>
         <div class="skills-grid">
-          <div class="skill-tag">Engenharia de Dados</div>
+          <div class="skill-tag" data-i18n="about-skill-1">Engenharia de Dados</div>
           <div class="skill-tag">Apache Airflow</div>
           <div class="skill-tag">dbt</div>
           <div class="skill-tag">Power BI</div>
           <div class="skill-tag">AWS</div>
-          <div class="skill-tag">PostgreSQL</div>
+          <div class="skill-tag">Docker</div>
           <div class="skill-tag">Python</div>
           <div class="skill-tag">DAX</div>
         </div>
@@ -726,7 +775,7 @@
 
   <!-- ===== CERTIFICAÇÕES ===== -->
   <section id="certificacoes" class="fade-in">
-    <h2 class="section-title">Certificações</h2>
+    <h2 class="section-title" data-i18n="certifications-title">Certificações</h2>
 
     <div class="cert-grid">
 
@@ -776,7 +825,7 @@
 
   <!-- ===== REPOSITÓRIOS GITHUB ===== -->
   <section id="repositorios" class="fade-in">
-    <h2 class="section-title">Repositórios GitHub em Destaque</h2>
+    <h2 class="section-title" data-i18n="repos-title">Repositórios GitHub em Destaque</h2>
     <div class="repos-grid">
 
       <div class="repo-card">
@@ -787,9 +836,10 @@
           <span class="repo-tag">Northwind</span>
           <span class="repo-tag">SQL</span>
         </div>
-        <p>Projeto de Data Warehouse usando dbt Core no dataset Northwind, seguindo padrões modernos de modelagem.</p>
-        <a href="https://github.com/marcosjmsoares/dbt-core-northwind-project-public" target="_blank"
-          class="repo-link">Ver repositório →</a>
+        <p data-i18n="repo-1-desc">Projeto de Data Warehouse usando dbt Core no dataset Northwind, seguindo padrões
+          modernos de modelagem.</p>
+        <a href="https://github.com/marcosjmsoares/dbt-core-northwind-project-public" target="_blank" class="repo-link"
+          data-i18n="repo-1-link">Ver repositório →</a>
       </div>
 
       <div class="repo-card">
@@ -799,8 +849,9 @@
           <span class="repo-tag">Python</span>
           <span class="repo-tag">LLM</span>
         </div>
-        <p>Workshop prático sobre agentes de IA e uso de LLMs em cenários reais.</p>
-        <a href="https://github.com/marcosjmsoares/workshop_ai_agent" target="_blank" class="repo-link">Ver repositório
+        <p data-i18n="repo-2-desc">Workshop prático sobre agentes de IA e uso de LLMs em cenários reais.</p>
+        <a href="https://github.com/marcosjmsoares/workshop_ai_agent" target="_blank" class="repo-link"
+          data-i18n="repo-2-link">Ver repositório
           →</a>
       </div>
 
@@ -811,15 +862,16 @@
           <span class="repo-tag">Data Engineering</span>
           <span class="repo-tag">ETL</span>
         </div>
-        <p>Teste técnico em Python com foco em manipulação de dados, automação e boas práticas.</p>
-        <a href="https://github.com/marcosjmsoares/Teste-Tecnico-Python-Acelera-01" target="_blank"
-          class="repo-link">Ver repositório →</a>
+        <p data-i18n="repo-3-desc">Teste técnico em Python com foco em manipulação de dados, automação e boas práticas.
+        </p>
+        <a href="https://github.com/marcosjmsoares/Teste-Tecnico-Python-Acelera-01" target="_blank" class="repo-link"
+          data-i18n="repo-3-link">Ver repositório →</a>
       </div>
 
     </div>
 
     <div class="repos-cta">
-      <a href="https://github.com/marcosjmsoares" target="_blank" class="btn-github">
+      <a href="https://github.com/marcosjmsoares" target="_blank" class="btn-github" data-i18n="repos-cta-all">
         <svg viewBox="0 0 24 24">
           <path
             d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
@@ -831,7 +883,7 @@
 
   <!-- ===== DASHBOARDS POWER BI ===== -->
   <section id="projetos" class="fade-in">
-    <h2 class="section-title">Dashboards Power BI</h2>
+    <h2 class="section-title" data-i18n="dashboards-title">Dashboards Power BI</h2>
     <div class="projetos-grid">
 
       <article class="projeto-card">
@@ -839,14 +891,15 @@
           <img src="img/dashboard-rh.jpg" alt="Dashboard de Recursos Humanos"
             style="width:100%;height:100%;object-fit:cover;border-radius:14px;">
         </div>
-        <h3>Dashboard de Recursos Humanos</h3>
+        <h3 data-i18n="dash-hr-title">Dashboard de Recursos Humanos</h3>
         <div class="projeto-tech">
           <span class="tech-badge">HR Analytics</span>
           <span class="tech-badge">Power BI</span>
           <span class="tech-badge">People Analytics</span>
         </div>
-        <p>Visão de headcount, contratações, demissões, massa salarial, más contratações e indicadores de turnover.</p>
-        <a href="repositorios.html#dashboard4" class="powerbi-link">Abrir Dashboard</a>
+        <p data-i18n="dash-hr-desc">Visão de headcount, contratações, demissões, massa salarial, más contratações e
+          indicadores de turnover.</p>
+        <a href="repositorios.html#dashboard4" class="powerbi-link" data-i18n="dash-hr-link">Abrir Dashboard</a>
       </article>
 
       <article class="projeto-card">
@@ -854,14 +907,15 @@
           <img src="img/dashboard-vendas.jpg" alt="Dashboard de Vendas"
             style="width:100%;height:100%;object-fit:cover;border-radius:14px;">
         </div>
-        <h3>Dashboard de Vendas</h3>
+        <h3 data-i18n="dash-sales-title">Dashboard de Vendas</h3>
         <div class="projeto-tech">
           <span class="tech-badge">Sales Analytics</span>
           <span class="tech-badge">Power BI</span>
           <span class="tech-badge">BI</span>
         </div>
-        <p>Painel executivo com faturamento, margens, notas emitidas, top vendedores e decomposição de resultados.</p>
-        <a href="repositorios.html#dashboard3" class="powerbi-link">Abrir Dashboard</a>
+        <p data-i18n="dash-sales-desc">Painel executivo com faturamento, margens, notas emitidas, top vendedores e
+          decomposição de resultados.</p>
+        <a href="repositorios.html#dashboard3" class="powerbi-link" data-i18n="dash-sales-link">Abrir Dashboard</a>
       </article>
 
       <article class="projeto-card">
@@ -869,15 +923,15 @@
           <img src="img/dashboard-maio-amarelo.jpg" alt="Dashboard Maio Amarelo"
             style="width:100%;height:100%;object-fit:cover;border-radius:14px;">
         </div>
-        <h3>Desafio Kickstart - Acidentes de Trânsito | Maio Amarelo</h3>
+        <h3 data-i18n="dash-maio-title">Desafio Kickstart - Acidentes de Trânsito | Maio Amarelo</h3>
         <div class="projeto-tech">
           <span class="tech-badge">DataViz</span>
           <span class="tech-badge">Power BI</span>
           <span class="tech-badge">Public Safety</span>
         </div>
-        <p>Análises de rodovias mais perigosas, causas de acidentes, vítimas, veículos e mapas de calor das ocorrências.
-        </p>
-        <a href="repositorios.html#dashboard2" class="powerbi-link">Abrir Dashboard</a>
+        <p data-i18n="dash-maio-desc">Análises de rodovias mais perigosas, causas de acidentes, vítimas, veículos e
+          mapas de calor das ocorrências.</p>
+        <a href="repositorios.html#dashboard2" class="powerbi-link" data-i18n="dash-maio-link">Abrir Dashboard</a>
       </article>
 
       <article class="projeto-card">
@@ -885,24 +939,152 @@
           <img src="img/dashboard-internacoes-xhospital.jpg" alt="Dashboard Internações Hospitalares"
             style="width:100%;height:100%;object-fit:cover;border-radius:14px;">
         </div>
-        <h3>Desafio Kickstart - Internações Hospitalares | XHospital</h3>
+        <h3 data-i18n="dash-hosp-title">Desafio Kickstart - Internações Hospitalares | XHospital</h3>
         <div class="projeto-tech">
           <span class="tech-badge">Healthcare Analytics</span>
           <span class="tech-badge">Power BI</span>
           <span class="tech-badge">DAX</span>
         </div>
-        <p>Overview de admissões, saídas, permanência média, mortalidade, receita e projeções de receita anual.</p>
-        <a href="repositorios.html#dashboard1" class="powerbi-link">Abrir Dashboard</a>
+        <p data-i18n="dash-hosp-desc">Overview de admissões, saídas, permanência média, mortalidade, receita e projeções
+          de receita anual.</p>
+        <a href="repositorios.html#dashboard1" class="powerbi-link" data-i18n="dash-hosp-link">Abrir Dashboard</a>
       </article>
 
     </div>
   </section>
 
   <footer class="fade-in">
-    <p>&copy; 2026 Marcos José de Moura Soares — Engenheiro de Dados.</p>
+    <p data-i18n="footer-text">&copy; 2026 Marcos José de Moura Soares — Engenheiro de Dados.</p>
   </footer>
 
   <script>
+    // Traduções
+    const translations = {
+      'pt-br': {
+        'title-tag': 'Marcos Soares - Engenheiro de Dados Sênior',
+        'nav-home': 'Home',
+        'nav-sobre': 'Sobre',
+        'nav-certificacoes': 'Certificações',
+        'nav-repositorios': 'Repositório de Projetos',
+        'nav-projetos': 'Dashboards Power BI',
+        'hero-role': 'Engenheiro de Dados Sênior',
+        'hero-subtitle': 'Engenheiro de dados Sênior com + 13 anos de experiência em infraestrutura de TI na saúde, orquestração de dados e arquiteturas modernas. Foco em transformar dados em insights acionáveis.',
+        'hero-cta': 'Ver Projetos →',
+        'social-linkedin': 'LinkedIn',
+        'social-github': 'GitHub',
+        'social-powerbi': 'Power BI',
+        'social-email': 'Email',
+        'email-tooltip': '✓ E-mail copiado!',
+        'about-title': 'Sobre Mim',
+        'about-p1': 'Profissional de TI com mais de 13 anos de experiência em ambientes hospitalares, atuando em infraestrutura, Business Intelligence e engenharia de dados. Trabalho em projetos de alta complexidade envolvendo integração de dados de saúde, governança e automação.',
+        'about-p2': 'Atuo com arquiteturas modernas de dados, ETL/ELT, modelagem dimensional, dashboards analíticos e pipelines escaláveis em nuvem. Meu foco é entregar soluções robustas, bem documentadas e alinhadas às necessidades do negócio.',
+        'about-skill-1': 'Engenharia de Dados',
+        'certifications-title': 'Certificações',
+        'repos-title': 'Repositórios GitHub em Destaque',
+        'repo-1-desc': 'Projeto de Data Warehouse usando dbt Core no dataset Northwind, seguindo padrões modernos de modelagem.',
+        'repo-1-link': 'Ver repositório →',
+        'repo-2-desc': 'Workshop prático sobre agentes de IA e uso de LLMs em cenários reais.',
+        'repo-2-link': 'Ver repositório →',
+        'repo-3-desc': 'Teste técnico em Python com foco em manipulação de dados, automação e boas práticas.',
+        'repo-3-link': 'Ver repositório →',
+        'repos-cta-all': 'Ver todos os projetos no GitHub',
+        'dashboards-title': 'Dashboards Power BI',
+        'dash-hr-title': 'Dashboard de Recursos Humanos',
+        'dash-hr-desc': 'Visão de headcount, contratações, demissões, massa salarial, más contratações e indicadores de turnover.',
+        'dash-hr-link': 'Abrir Dashboard',
+        'dash-sales-title': 'Dashboard de Vendas',
+        'dash-sales-desc': 'Painel executivo com faturamento, margens, notas emitidas, top vendedores e decomposição de resultados.',
+        'dash-sales-link': 'Abrir Dashboard',
+        'dash-maio-title': 'Desafio Kickstart - Acidentes de Trânsito | Maio Amarelo',
+        'dash-maio-desc': 'Análises de rodovias mais perigosas, causas de acidentes, vítimas, veículos e mapas de calor das ocorrências.',
+        'dash-maio-link': 'Abrir Dashboard',
+        'dash-hosp-title': 'Desafio Kickstart - Internações Hospitalares | XHospital',
+        'dash-hosp-desc': 'Overview de admissões, saídas, permanência média, mortalidade, receita e projeções de receita anual.',
+        'dash-hosp-link': 'Abrir Dashboard',
+        'footer-text': '&copy; 2026 Marcos José de Moura Soares — Engenheiro de Dados.'
+      },
+      'en-usa': {
+        'title-tag': 'Marcos Soares - Senior Data Engineer',
+        'nav-home': 'Home',
+        'nav-sobre': 'About',
+        'nav-certificacoes': 'Certifications',
+        'nav-repositorios': 'Project Repositories',
+        'nav-projetos': 'Power BI Dashboards',
+        'hero-role': 'Senior Data Engineer',
+        'hero-subtitle': 'Senior Data Engineer with +13 years of experience in healthcare IT infrastructure, data orchestration, and modern architectures. Focused on transforming data into actionable insights.',
+        'hero-cta': 'View Projects →',
+        'social-linkedin': 'LinkedIn',
+        'social-github': 'GitHub',
+        'social-powerbi': 'Power BI',
+        'social-email': 'Email',
+        'email-tooltip': '✓ Email copied!',
+        'about-title': 'About Me',
+        'about-p1': 'IT Professional with over 13 years of experience in hospital environments, working in infrastructure, Business Intelligence, and data engineering. I work on highly complex projects involving health data integration, governance, and automation.',
+        'about-p2': 'I work with modern data architectures, ETL/ELT, dimensional modeling, analytical dashboards, and scalable cloud pipelines. My focus is on delivering robust, well-documented solutions aligned with business needs.',
+        'about-skill-1': 'Data Engineering',
+        'certifications-title': 'Certifications',
+        'repos-title': 'Featured GitHub Repositories',
+        'repo-1-desc': 'Data Warehouse project using dbt Core on the Northwind dataset, following modern modeling standards.',
+        'repo-1-link': 'View repository →',
+        'repo-2-desc': 'Practical workshop on AI agents and using LLMs in real-world scenarios.',
+        'repo-2-link': 'View repository →',
+        'repo-3-desc': 'Technical test in Python focused on data manipulation, automation, and best practices.',
+        'repo-3-link': 'View repository →',
+        'repos-cta-all': 'View all projects on GitHub',
+        'dashboards-title': 'Power BI Dashboards',
+        'dash-hr-title': 'Human Resources Dashboard',
+        'dash-hr-desc': 'Insights on headcount, hires, terminations, payroll, bad hires, and turnover indicators.',
+        'dash-hr-link': 'Open Dashboard',
+        'dash-sales-title': 'Sales Dashboard',
+        'dash-sales-desc': 'Executive panel with revenue, margins, invoices issued, top salespeople, and results decomposition.',
+        'dash-sales-link': 'Open Dashboard',
+        'dash-maio-title': 'Kickstart Challenge - Traffic Accidents | Yellow May',
+        'dash-maio-desc': 'Analysis of the most dangerous highways, causes of accidents, victims, vehicles, and heat maps of occurrences.',
+        'dash-maio-link': 'Open Dashboard',
+        'dash-hosp-title': 'Kickstart Challenge - Hospitalizations | XHospital',
+        'dash-hosp-desc': 'Overview of admissions, discharges, average length of stay, mortality, revenue, and annual revenue projections.',
+        'dash-hosp-link': 'Open Dashboard',
+        'footer-text': '&copy; 2026 Marcos José de Moura Soares — Data Engineer.'
+      }
+    };
+
+    function changeLanguage(lang) {
+      localStorage.setItem('pref-lang', lang);
+      applyLanguage(lang);
+    }
+
+    function applyLanguage(lang) {
+      document.documentElement.lang = lang === 'pt-br' ? 'pt-BR' : 'en-US';
+      const langData = translations[lang];
+      if (!langData) return;
+
+      if (langData['title-tag']) {
+        document.title = langData['title-tag'];
+      }
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (langData[key]) {
+          if (el.innerHTML.includes('<') || el.innerHTML.includes('&copy;') || key === 'footer-text' || key.includes('desc') || key.includes('title')) {
+            el.innerHTML = langData[key];
+          } else {
+            el.textContent = langData[key];
+          }
+        }
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      if (lang === 'pt-br') {
+        document.getElementById('btn-pt').classList.add('active');
+      } else {
+        document.getElementById('btn-en').classList.add('active');
+      }
+    }
+
+    // Inicializar idioma
+    const savedLang = localStorage.getItem('pref-lang') || 'pt-br';
+    applyLanguage(savedLang);
+
     // Navbar scroll
     window.addEventListener('scroll', () => {
       document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
