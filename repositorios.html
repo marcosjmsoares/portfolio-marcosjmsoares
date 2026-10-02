@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Repositórios & Dashboards - Marcos José de Moura Soares</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Source Sans 3', sans-serif;
       background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
@@ -19,11 +27,12 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(10,10,15,0.95);
+      background: rgba(10, 10, 15, 0.95);
       backdrop-filter: blur(20px);
       z-index: 1000;
       padding: 1rem 0;
     }
+
     .nav-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -32,6 +41,7 @@
       align-items: center;
       padding: 0 2rem;
     }
+
     .logo {
       font-family: 'Outfit', sans-serif;
       font-size: 1.5rem;
@@ -41,17 +51,20 @@
       -webkit-text-fill-color: transparent;
       text-decoration: none;
     }
+
     .nav-links {
       display: flex;
       list-style: none;
       gap: 2rem;
     }
+
     .nav-links a {
       color: #e0e0e0;
       text-decoration: none;
       font-weight: 500;
       transition: all 0.3s ease;
     }
+
     .nav-links a:hover {
       color: #00d4ff;
     }
@@ -66,6 +79,7 @@
       text-align: center;
       margin-bottom: 4rem;
     }
+
     .page-title {
       font-family: 'Outfit', sans-serif;
       font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -74,6 +88,7 @@
       -webkit-text-fill-color: transparent;
       margin-bottom: 1rem;
     }
+
     .page-subtitle {
       font-size: 1.3rem;
       opacity: 0.9;
@@ -97,36 +112,41 @@
       gap: 2rem;
       margin-bottom: 2rem;
     }
+
     .repo-card {
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 20px;
       padding: 2rem;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.4s ease;
       text-decoration: none;
       color: inherit;
       display: block;
     }
+
     .repo-card:hover {
       transform: translateY(-8px);
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       border-color: #00d4ff;
-      box-shadow: 0 20px 40px rgba(0,212,255,0.15);
+      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
     }
+
     .repo-card h3 {
       font-family: 'Outfit', sans-serif;
       font-size: 1.4rem;
       margin-bottom: 1rem;
       color: #ffffff;
     }
+
     .repo-tech {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
       margin-bottom: 1.5rem;
     }
+
     .tech-badge {
-      background: rgba(0,212,255,0.2);
+      background: rgba(0, 212, 255, 0.2);
       color: #00d4ff;
       padding: 0.25rem 0.75rem;
       border-radius: 15px;
@@ -139,6 +159,7 @@
       margin-top: 1.5rem;
       margin-bottom: 4rem;
     }
+
     .github-btn {
       display: inline-flex;
       align-items: center;
@@ -152,22 +173,25 @@
       transition: all 0.3s ease;
       font-family: 'Outfit', sans-serif;
     }
+
     .github-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(0,212,255,0.4);
+      box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
     }
 
     .dashboards-section {
       margin-top: 2rem;
     }
+
     .dashboard-item {
       margin-bottom: 4rem;
-      background: rgba(255,255,255,0.03);
+      background: rgba(255, 255, 255, 0.03);
       border-radius: 20px;
       padding: 2rem;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(10px);
     }
+
     .dashboard-header {
       display: flex;
       align-items: flex-start;
@@ -176,17 +200,20 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
+
     .dashboard-title {
       font-family: 'Outfit', sans-serif;
       font-size: 1.8rem;
       color: #ffffff;
       flex: 1;
     }
+
     .dashboard-tech {
       display: flex;
       gap: 0.5rem;
       flex-wrap: wrap;
     }
+
     .dashboard-container {
       position: relative;
       width: 100%;
@@ -194,9 +221,10 @@
       min-height: 600px;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
       background: #1a1a2e;
     }
+
     .powerbi-iframe {
       width: 100%;
       height: 100%;
@@ -219,9 +247,10 @@
       margin-bottom: 2rem;
       font-family: 'Outfit', sans-serif;
     }
+
     .back-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 15px 40px rgba(0,212,255,0.4);
+      box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
     }
 
     .nav-right {
@@ -268,13 +297,27 @@
     }
 
     @media (max-width: 768px) {
-      .container { padding: 6rem 1rem 2rem; }
-      .dashboard-header { flex-direction: column; align-items: flex-start; }
-      .dashboard-container { height: 60vh; min-height: 500px; }
-      .nav-links { display: none; }
+      .container {
+        padding: 6rem 1rem 2rem;
+      }
+
+      .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .dashboard-container {
+        height: 60vh;
+        min-height: 500px;
+      }
+
+      .nav-links {
+        display: none;
+      }
     }
   </style>
 </head>
+
 <body>
   <nav>
     <div class="nav-container">
@@ -311,7 +354,8 @@
             <span class="tech-badge">Northwind</span>
             <span class="tech-badge">SQL</span>
           </div>
-          <p data-i18n="repo-1-desc">Projeto de Data Warehouse usando dbt Core no dataset Northwind, seguindo padrões modernos de modelagem.</p>
+          <p data-i18n="repo-1-desc">Projeto de Data Warehouse usando dbt Core no dataset Northwind, seguindo padrões
+            modernos de modelagem.</p>
         </a>
 
         <a href="https://github.com/marcosjmsoares/workshop_ai_agent" class="repo-card" target="_blank">
@@ -331,7 +375,8 @@
             <span class="tech-badge">Data Engineering</span>
             <span class="tech-badge">ETL</span>
           </div>
-          <p data-i18n="repo-3-desc">Teste técnico em Python com foco em manipulação de dados, automação e boas práticas.</p>
+          <p data-i18n="repo-3-desc">Teste técnico em Python com foco em manipulação de dados, automação e boas
+            práticas.</p>
         </a>
       </div>
 
@@ -348,14 +393,17 @@
       <!-- Internações -->
       <div id="dashboard1" class="dashboard-item">
         <div class="dashboard-header">
-          <div class="dashboard-title" data-i18n="dash-hosp-title">Desafio Kickstart - Internações Hospitalares | XHospital</div>
+          <div class="dashboard-title" data-i18n="dash-hosp-title">Desafio Kickstart - Internações Hospitalares |
+            XHospital</div>
           <div class="dashboard-tech">
             <span class="tech-badge">Healthcare Analytics</span>
             <span class="tech-badge">Power BI</span>
             <span class="tech-badge">DAX</span>
           </div>
         </div>
-        <p data-i18n="dash-hosp-summary"><strong>Principais análises:</strong> Admissões, saídas, altas e óbitos, tempo médio de permanência, taxa de mortalidade, receita e receita diária média, ticket médio, projeção de receita anual e taxa de variação homóloga.</p>
+        <p data-i18n="dash-hosp-summary"><strong>Principais análises:</strong> Admissões, saídas, altas e óbitos, tempo
+          médio de permanência, taxa de mortalidade, receita e receita diária média, ticket médio, projeção de receita
+          anual e taxa de variação homóloga.</p>
         <div class="dashboard-container">
           <iframe class="powerbi-iframe"
             src="https://app.powerbi.com/view?r=eyJrIjoiYzNhYTNiMmUtZmFmNS00NDAwLWE1NTQtN2NkYjg3M2Q3ZWRiIiwidCI6ImI1MDQyNjY5LWU4ODctNDM1ZC04NzUyLWI4ZDk0MTY0YjVmZCJ9"
@@ -367,14 +415,17 @@
       <!-- Maio Amarelo -->
       <div id="dashboard2" class="dashboard-item">
         <div class="dashboard-header">
-          <div class="dashboard-title" data-i18n="dash-maio-title">Desafio Kickstart - Acidentes de Trânsito no Brasil | Maio Amarelo</div>
+          <div class="dashboard-title" data-i18n="dash-maio-title">Desafio Kickstart - Acidentes de Trânsito no Brasil |
+            Maio Amarelo</div>
           <div class="dashboard-tech">
             <span class="tech-badge">DataViz</span>
             <span class="tech-badge">Power BI</span>
             <span class="tech-badge">Public Safety</span>
           </div>
         </div>
-        <p data-i18n="dash-maio-summary"><strong>Principais análises:</strong> Rodovias mais perigosas, causas de acidentes mais comuns, proporção de acidentes com vítimas fatais, períodos com maior número de ocorrências, proporção de vítimas e veículos acidentados, além de mapa das rodovias e mapa de calor.</p>
+        <p data-i18n="dash-maio-summary"><strong>Principais análises:</strong> Rodovias mais perigosas, causas de
+          acidentes mais comuns, proporção de acidentes com vítimas fatais, períodos com maior número de ocorrências,
+          proporção de vítimas e veículos acidentados, além de mapa das rodovias e mapa de calor.</p>
         <div class="dashboard-container">
           <iframe class="powerbi-iframe"
             src="https://app.powerbi.com/view?r=eyJrIjoiZjY4ZWY4OTktZDQyNy00ZTVkLTg1ZmYtNTdhODc1M2QyNjYxIiwidCI6ImI1MDQyNjY5LWU4ODctNDM1ZC04NzUyLWI4ZDk0MTY0YjVmZCJ9"
@@ -393,7 +444,10 @@
             <span class="tech-badge">BI</span>
           </div>
         </div>
-        <p data-i18n="dash-sales-summary"><strong>Principais análises:</strong> Dashboard baseado na base de dados da Power BI Week (Aula 01), com faturamento e faturamento ano anterior, variação ano a ano, margem bruta e sua evolução, quantidade de notas emitidas, top vendedores, decomposição por linha de produto, fornecedor e vendedor, além de key results com principais influenciadores.</p>
+        <p data-i18n="dash-sales-summary"><strong>Principais análises:</strong> Dashboard baseado na base de dados da
+          Power BI Week (Aula 01), com faturamento e faturamento ano anterior, variação ano a ano, margem bruta e sua
+          evolução, quantidade de notas emitidas, top vendedores, decomposição por linha de produto, fornecedor e
+          vendedor, além de key results com principais influenciadores.</p>
         <div class="dashboard-container">
           <iframe class="powerbi-iframe"
             src="https://app.powerbi.com/view?r=eyJrIjoiMDk3YzAwMmUtODA5ZC00Y2E1LWEyNDUtNTFiMmE0MWEyYWZiIiwidCI6ImI1MDQyNjY5LWU4ODctNDM1ZC04NzUyLWI4ZDk0MTY0YjVmZCJ9"
@@ -412,7 +466,10 @@
             <span class="tech-badge">People Analytics</span>
           </div>
         </div>
-        <p data-i18n="dash-hr-summary"><strong>Principais análises:</strong> Dashboard com base da Power BI Week (Aula 02), cobrindo contratações, demissões, massa salarial, headcount, índice de más contratações, percentual de turnover e filtro dinâmico para alternar entre contratações, demissões, más contratações e headcount com visão aprofundada.</p>
+        <p data-i18n="dash-hr-summary"><strong>Principais análises:</strong> Dashboard com base da Power BI Week (Aula
+          02), cobrindo contratações, demissões, massa salarial, headcount, índice de más contratações, percentual de
+          turnover e filtro dinâmico para alternar entre contratações, demissões, más contratações e headcount com visão
+          aprofundada.</p>
         <div class="dashboard-container">
           <iframe class="powerbi-iframe"
             src="https://app.powerbi.com/view?r=eyJrIjoiYzZhZmUwYjUtN2I0Ni00N2I3LWE5MzktZTYxMjhjMDQ2YTA1IiwidCI6ImI1MDQyNjY5LWU4ODctNDM1ZC04NzUyLWI4ZDk0MTY0YjVmZCJ9"
@@ -420,6 +477,32 @@
           </iframe>
         </div>
       </div>
+
+      <!-- Legado SYSTEMTI.NET -->
+      <div id="dashboard5" class="dashboard-item">
+        <div class="dashboard-header">
+          <div class="dashboard-title" data-i18n="dash-systemti-title">Legado SYSTEMTI.NET - Dashboard de
+            Relatórios Nativos MV</div>
+          <div class="dashboard-tech">
+            <span class="tech-badge">Legado Systemti.net</span>
+            <span class="tech-badge">Power BI</span>
+            <span class="tech-badge">Support Users</span>
+          </div>
+        </div>
+        <p data-i18n="dash-systemti-summary"><strong>Principais análises:</strong> Como extensão do legado construído pelo
+          fórum SYSTEMTI.NET após o encerramento de suas atividades, este repositório reúne uma coleção de scripts SQL
+          nativos do ERP MV HTML5. O projeto mantém vivo o propósito da comunidade em apoiar analistas, engenheiros de
+          dados e profissionais de TI no setor hospitalar. Disponibilizado gratuitamente, o acervo facilita a extração
+          de dados e a otimização de consultas nativas do sistema. A iniciativa preserva a cultura de colaboração e
+          compartilhamento do conhecimento técnico em saúde consolidada ao longo dos anos pelo fórum.</p>
+        <div class="dashboard-container">
+          <iframe class="powerbi-iframe"
+            src="https://app.powerbi.com/view?r=eyJrIjoiMjY4ZmQ2NzMtMDg2Ny00NmU3LWIwMTktMWU1YzMzZjJjZDk2IiwidCI6ImI1MDQyNjY5LWU4ODctNDM1ZC04NzUyLWI4ZDk0MTY0YjVmZCJ9"
+            allowfullscreen="true">
+          </iframe>
+        </div>
+      </div>
+
     </section>
   </div>
 
@@ -445,7 +528,9 @@
         'dash-sales-title': 'Dashboard de Vendas',
         'dash-sales-summary': '<strong>Principais análises:</strong> Dashboard baseado na base de dados da Power BI Week (Aula 01), com faturamento e faturamento ano anterior, variação ano a ano, margem bruta e sua evolução, quantidade de notas emitidas, top vendedores, decomposição por linha de produto, fornecedor e vendedor, além de key results com principais influenciadores.',
         'dash-hr-title': 'Dashboard de Recursos Humanos',
-        'dash-hr-summary': '<strong>Principais análises:</strong> Dashboard com base da Power BI Week (Aula 02), cobrindo contratações, demissões, massa salarial, headcount, índice de más contratações, percentual de turnover e filtro dinâmico para alternar entre contratações, demissões, más contratações e headcount com visão aprofundada.'
+        'dash-hr-summary': '<strong>Principais análises:</strong> Dashboard com base da Power BI Week (Aula 02), cobrindo contratações, demissões, massa salarial, headcount, índice de más contratações, percentual de turnover e filtro dinâmico para alternar entre contratações, demissões, más contratações e headcount com visão aprofundada.',
+        'dash-systemti-title': 'Legado SYSTEMTI.NET - Dashboard de Relatórios Nativos MV',
+        'dash-systemti-summary': '<strong>Principais análises:</strong> Como extensão do legado construído pelo fórum SYSTEMTI.NET após o encerramento de suas atividades, este repositório reúne uma coleção de scripts SQL nativos do ERP MV HTML5. O projeto mantém vivo o propósito da comunidade em apoiar analistas, engenheiros de dados e profissionais de TI no setor hospitalar. Disponibilizado gratuitamente, o acervo facilita a extração de dados e a otimização de consultas nativas do sistema. A iniciativa preserva a cultura de colaboração e compartilhamento do conhecimento técnico em saúde consolidada ao longo dos anos pelo fórum.'
       },
       'en-usa': {
         'title-tag': 'Repositories & Dashboards - Marcos José de Moura Soares',
@@ -466,7 +551,9 @@
         'dash-sales-title': 'Sales Dashboard',
         'dash-sales-summary': '<strong>Main analysis:</strong> Dashboard based on the Power BI Week (Class 01) database, featuring billing and prior year billing, year-over-year variation, gross margin and its evolution, quantity of invoices issued, top salespeople, decomposition by product line, supplier and salesperson, in addition to key results with main influencers.',
         'dash-hr-title': 'Human Resources Dashboard',
-        'dash-hr-summary': '<strong>Main analysis:</strong> Dashboard based on Power BI Week (Class 02), covering hiring, dismissals, payroll, headcount, bad hires index, turnover percentage, and dynamic filter to toggle between hiring, dismissals, bad hires, and headcount with an in-depth view.'
+        'dash-hr-summary': '<strong>Main analysis:</strong> Dashboard based on Power BI Week (Class 02), covering hiring, dismissals, payroll, headcount, bad hires index, turnover percentage, and dynamic filter to toggle between hiring, dismissals, bad hires, and headcount with an in-depth view.',
+        'dash-systemti-title': 'SYSTEMTI.NET Legacy - Native MV Reports Dashboard',
+        'dash-systemti-summary': '<strong>Main analysis:</strong> As an extension of the legacy built by the SYSTEMTI.NET forum after its closure, this repository gathers a collection of native SQL scripts for the MV HTML5 ERP. The project keeps alive the community\'s purpose of supporting analysts, data engineers, and IT professionals in the healthcare sector. Provided free of charge, the collection facilitates data extraction and the optimization of native system queries. This initiative preserves the culture of collaboration and technical knowledge sharing in healthcare consolidated by the forum over the years.'
       }
     };
 
@@ -508,4 +595,5 @@
     applyLanguage(savedLang);
   </script>
 </body>
+
 </html>
